@@ -1,12 +1,12 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
-const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
 const cors = require("cors");
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect(dbConfig.url, {
+mongoose.connect(process.env.url, {
     useNewUrlParser: true
 }).then(() => {
     console.log("Databse Connected Successfully!!");    
