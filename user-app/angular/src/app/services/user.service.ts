@@ -12,14 +12,14 @@ export class UserService {
 
   public LoadUsers() {
     return this.httpClient.get(
-      'https://3000-aliman10-nodeusermanage-vk26ncqslm4.ws-eu45.gitpod.io/user');
+      'https://user-management-node.herokuapp.com/user');
   }
 
   public AddUser(user: User) {
-    return this.httpClient.post('http://localhost:8001/user/add',
+    return this.httpClient.post('https://user-management-node.herokuapp.com/user',
       {
-        first_name: user.first_name,
-        last_name: user.last_name,
+        firstName: user.firstName,
+        lastName: user.lastName,
         email: user.email
       }
     );
@@ -30,8 +30,8 @@ export class UserService {
   public UpdateUser(user: User) {
     return this.httpClient.patch('http://localhost:8001/user/update/'+user.email,
       {
-        first_name: user.first_name,
-        last_name: user.last_name,
+        firstName: user.firstName,
+        lastName: user.lastName,
         email: user.email
       }
     );

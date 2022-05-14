@@ -39,7 +39,6 @@ export class AppComponent implements OnInit {
     }
     this.editUserForm = true;
     this.editedUser = user;
-    console.log("🚀 ~ file: app.component.ts ~ line 43 ~ AppComponent ~ showEditUserForm ~ editedUser", this.editedUser)
   }
 
   showAddUserForm() {
@@ -65,8 +64,8 @@ export class AppComponent implements OnInit {
     let selectedUserByEmail = this.users.find(user => user.email === this.editedUser.email);
     if (selectedUserByEmail) {
       selectedUserByEmail.email = this.editedUser.email;
-      selectedUserByEmail.first_name = this.editedUser.first_name;
-      selectedUserByEmail.last_name = this.editedUser.last_name;
+      selectedUserByEmail.firstName = this.editedUser.first_name;
+      selectedUserByEmail.lastName = this.editedUser.last_name;
 
       this.userService.updateUser(this.editedUser);
       this.editUserForm = false;
