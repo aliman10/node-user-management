@@ -54,7 +54,7 @@ export class AppComponent implements OnInit {
   saveUser(user: User) {
     if (this.isNewUser) {
       // add a new user
-      this.userService.addUser(user);
+     this.userService.addUser(user);
       this.users.push(user);
     }
     this.userForm = false;
@@ -64,9 +64,8 @@ export class AppComponent implements OnInit {
     let selectedUserByEmail = this.users.find(user => user.email === this.editedUser.email);
     if (selectedUserByEmail) {
       selectedUserByEmail.email = this.editedUser.email;
-      selectedUserByEmail.firstName = this.editedUser.first_name;
-      selectedUserByEmail.lastName = this.editedUser.last_name;
-
+      selectedUserByEmail.firstName = this.editedUser.firstName;
+      selectedUserByEmail.lastName = this.editedUser.lastName;
       this.userService.updateUser(this.editedUser);
       this.editUserForm = false;
       this.editedUser = {};
@@ -75,6 +74,7 @@ export class AppComponent implements OnInit {
 
   removeUser(user: User) {
     this.users.splice(this.users.indexOf(user), 1);
+    this.userService.deleteUser(user._id).subscribe();
   }
 
   cancelEdits() {

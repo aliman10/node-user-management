@@ -20,15 +20,15 @@ export class UserService {
       {
         firstName: user.firstName,
         lastName: user.lastName,
-        email: user.email
+        email: user.email,
       }
     );
 
   }
- 
- 
+
+
   public UpdateUser(user: User) {
-    return this.httpClient.patch('http://localhost:8001/user/update/'+user.email,
+    return this.httpClient.patch( 'https://user-management-node.herokuapp.com/user/' + user._id,
       {
         firstName: user.firstName,
         lastName: user.lastName,
@@ -52,10 +52,10 @@ export class UserService {
 
   }
   updateUser(user: User) {
-   this.UpdateUser(user).subscribe();
+    this.UpdateUser(user).subscribe();
   }
-  deleteUser(user: User) {
-    this.upersons.splice(this.upersons.indexOf(user), 1);
+  deleteUser(id: any) {
+    return this.httpClient.delete(
+      'https://user-management-node.herokuapp.com/user/'+id);
   }
-
 }

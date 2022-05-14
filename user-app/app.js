@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require("cors");
+const path = require('path');
 
 mongoose.Promise = global.Promise;
 
@@ -27,8 +28,10 @@ const UserRoute = require('./routes')
 app.use('/user',UserRoute)
 
 
-app.get('/', (req, res) => {
-    res.json({"message": "Hello Crud Node Express"});
+
+app.use(express.static(__dirname + '/dist'));
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
 
 app.listen(3000, () => {
